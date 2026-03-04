@@ -1,0 +1,86 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #1d1d1f;
+  background: #f5f7fb;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+h1 {
+  margin-bottom: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+input,
+textarea {
+  border: 1px solid #cfd7e6;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 12px;
+  background: #2865f4;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.info {
+  margin: 8px 0 16px;
+  color: #273b67;
+}
+
+.hidden {
+  display: none;
+}
+
+.success {
+  color: #136d3a;
+}
+
+.error {
+  color: #a32424;
+}
+
+ul {
+  padding-left: 20px;
+}

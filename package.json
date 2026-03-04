@@ -1,0 +1,13 @@
+{
+  "name": "messagebot-mailer",
+  "version": "1.0.0",
+  "description": "Web interface for Telegram bot broadcasts from CSV TG_ID list",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
