@@ -6,6 +6,21 @@ const sendBtn = document.querySelector('#send-btn');
 
 let tgIds = [];
 
+
+function buildUnexpectedResponseError(response, rawBody) {
+  const snippet = rawBody.slice(0, 120).replace(/\s+/g, ' ').trim();
+
+  if (response.status === 404) {
+    return new Error(
+      'API /api/send не найден (404). Обычно это означает, что серверная часть не запущена или деплой сделан как статический сайт без backend.',
+    );
+  }
+
+  return new Error(
+    `Сервер вернул неожиданный ответ (не JSON). Код: ${response.status}. Проверьте backend API /api/send. ${snippet ? `Ответ: ${snippet}` : ''}`,
+  );
+}
+
 function parseCsv(text) {
   const normalized = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   const rows = normalized.split('\n').map((row) => row.trim()).filter(Boolean);
@@ -87,9 +102,7 @@ form.addEventListener('submit', async (event) => {
     try {
       payload = rawBody ? JSON.parse(rawBody) : {};
     } catch {
-      throw new Error(
-        `Сервер вернул неожиданный ответ (не JSON). Код: ${response.status}. ${rawBody.slice(0, 180)}`,
-      );
+      throw buildUnexpectedResponseError(response, rawBody);
     }
 
     if (!response.ok) {
