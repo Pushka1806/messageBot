@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рассылка Telegram</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Рассылка в Telegram</h1>
+
+    <form id="mailer-form" class="card">
+      <label>
+        Ключ бота
+        <input id="bot-token" type="text" placeholder="123456:ABC..." required />
+      </label>
+
+      <label>
+        CSV файл с колонкой <strong>TG_ID</strong>
+        <input id="csv-file" type="file" accept=".csv,text/csv" required />
+      </label>
+
+      <p id="count-info" class="info">Файл ещё не загружен.</p>
+
+      <label>
+        Сообщение
+        <textarea id="message" rows="6" placeholder="Введите текст рассылки" required></textarea>
+      </label>
+
+      <button id="send-btn" type="submit">Отправить рассылку</button>
+    </form>
+
+    <section id="result" class="card hidden" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
