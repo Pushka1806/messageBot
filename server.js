@@ -139,8 +139,13 @@ function serveStatic(req, res) {
 }
 
 const server = http.createServer((req, res) => {
-  if (req.method === 'POST' && req.url === '/api/send') {
-    handleSend(req, res);
+  if (req.url === '/api/send') {
+    if (req.method === 'POST') {
+      handleSend(req, res);
+      return;
+    }
+
+    sendJson(res, 405, { error: 'Method not allowed' });
     return;
   }
 

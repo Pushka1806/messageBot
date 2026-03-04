@@ -81,7 +81,16 @@ form.addEventListener('submit', async (event) => {
       body: JSON.stringify({ botToken, message, tgIds }),
     });
 
-    const payload = await response.json();
+    const rawBody = await response.text();
+    let payload;
+
+    try {
+      payload = rawBody ? JSON.parse(rawBody) : {};
+    } catch {
+      throw new Error(
+        `Сервер вернул неожиданный ответ (не JSON). Код: ${response.status}. ${rawBody.slice(0, 180)}`,
+      );
+    }
 
     if (!response.ok) {
       throw new Error(payload.error || 'Не удалось отправить рассылку.');
